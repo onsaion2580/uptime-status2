@@ -41,18 +41,6 @@ export function MonitorCard({ monitor, showLink }: MonitorCardProps) {
             <span className="font-medium text-slate-900 dark:text-white">
               {monitor.name}
             </span>
-            {showLink && (
-              <a
-                href={monitor.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="text-slate-400 hover:text-green-500 transition-colors"
-                aria-label={`访问 ${monitor.name} 网站`}
-              >
-                <span aria-hidden="true">🔗</span>
-              </a>
-            )}
           </div>
           <div className="flex items-center gap-2">
             <span className={`text-sm font-medium ${getStatusColor(monitor.status)}`}>
