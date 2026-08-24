@@ -5,10 +5,9 @@ import { MonitorSkeleton } from './MonitorSkeleton';
 interface MonitorListProps {
   monitors: ProcessedMonitor[];
   isLoading: boolean;
-  showLink: boolean;
 }
 
-export function MonitorList({ monitors, isLoading, showLink }: MonitorListProps) {
+export function MonitorList({ monitors, isLoading }: MonitorListProps) {
   if (isLoading) {
     return (
       <div className="card overflow-hidden">
@@ -34,10 +33,7 @@ export function MonitorList({ monitors, isLoading, showLink }: MonitorListProps)
       <ul role="list">
         {monitors.map((monitor) => (
           <li key={monitor.id}>
-            <MonitorCard 
-              monitor={monitor} 
-              showLink={showLink}
-            />
+            <MonitorCard monitor={monitor} />
           </li>
         ))}
       </ul>
