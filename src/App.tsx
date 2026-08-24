@@ -14,7 +14,6 @@ import { getConfig } from './config';
 
 function App() {
   useTheme();
-
   const config = getConfig();
   const embedMode = useAppStore((s) => s.embedMode);
   const setEmbedMode = useAppStore((s) => s.setEmbedMode);
@@ -22,13 +21,11 @@ function App() {
   // 初始化：设置页面标题、描述、检查嵌入模式
   useEffect(() => {
     document.title = config.siteName;
-
     // 设置 meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute('content', config.siteDescription);
     }
-
     const params = new URLSearchParams(window.location.search);
     if (params.get('embed') === '1') {
       setEmbedMode(true);
@@ -51,10 +48,8 @@ function App() {
   // 状态变化通知
   useNotification(allMonitors);
 
-  const showLink = config.showLink;
-
   // 检查是否配置了 API Key
-  const hasApiKey = config.apiKeys && config.apiKeys.length > 0 && 
+  const hasApiKey = config.apiKeys && config.apiKeys.length > 0 &&
     config.apiKeys.some(key => key && key !== 'your-api-key');
 
   if (!hasApiKey) {
@@ -110,7 +105,7 @@ function App() {
     <ErrorBoundary>
       <div className={`min-h-screen ${embedMode ? 'p-4' : ''}`}>
         <Header />
-        
+
         <main id="main-content" className={`max-w-6xl mx-auto px-4 ${embedMode ? '' : 'pt-6'} pb-8`} role="main">
           {!embedMode && (
             <>
@@ -118,7 +113,7 @@ function App() {
               <Toolbar onRefresh={refetch} isLoading={isFetching} lastUpdated={lastUpdated} />
             </>
           )}
-          
+
           {/* 嵌入模式简易工具栏 */}
           {embedMode && (
             <div className="flex items-center justify-end gap-2 mb-4">
@@ -128,7 +123,7 @@ function App() {
               <button
                 onClick={() => refetch()}
                 disabled={isFetching}
-                className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 
+                className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700
                            text-slate-500 hover:text-slate-700 dark:hover:text-slate-300
                            transition-colors disabled:opacity-50"
                 title="刷新数据"
@@ -140,16 +135,14 @@ function App() {
               </button>
             </div>
           )}
-
           <div className={`grid ${embedMode ? '' : 'lg:grid-cols-3'} gap-6`}>
             <div className={embedMode ? '' : 'lg:col-span-2'}>
-              <MonitorList 
-                monitors={monitors} 
+              <MonitorList
+                monitors={monitors}
                 isLoading={isLoading}
-                showLink={showLink}
               />
             </div>
-            
+
             {!embedMode && (
               <div>
                 <IncidentList incidents={incidents} isLoading={isLoading} />
@@ -157,7 +150,6 @@ function App() {
             )}
           </div>
         </main>
-
         <Footer />
       </div>
     </ErrorBoundary>
