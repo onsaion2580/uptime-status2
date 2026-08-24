@@ -52,7 +52,7 @@ export function StatsOverview({ total, up, down, paused, avgUptime, isLoading }:
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard label="总服务数" value={total} icon="📊" />
         <StatCard label="正常运行" value={up} icon="✅" color="text-green-500" />
-        <StatCard label="故障中" value={down} icon="❌" color="text-red-500" />
+        <StatCard label="故障中" value={down} icon="⚠️" color="text-red-500" />
         <StatCard label="已暂停" value={paused} icon="⏸️" color="text-yellow-500" />
       </div>
     </div>
