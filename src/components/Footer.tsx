@@ -12,7 +12,7 @@ export function Footer() {
       <p>
         基于{' '}
         <a
-          href="https://github.com/onsaion2580/uptime-status2/"
+          href="https://uptimerobot.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-green-500 hover:underline"
