@@ -36,7 +36,7 @@ export function StatsOverview({ total, up, down, paused, avgUptime, isLoading }:
         aria-live="polite"
       >
         <span className={`text-2xl ${allOk ? 'animate-heartbeat' : ''}`} aria-hidden="true">
-          {allOk ? '💚' : '🔴'}
+          {allOk ? '✅' : '⚠️'}
         </span>
         <div>
           <p className={`font-semibold ${allOk ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
