@@ -12,13 +12,11 @@ import { useAppStore } from '../store';
 
 interface MonitorCardProps {
   monitor: ProcessedMonitor;
-  showLink: boolean;
 }
 
-export function MonitorCard({ monitor, showLink }: MonitorCardProps) {
+export function MonitorCard({ monitor }: MonitorCardProps) {
   const [expanded, setExpanded] = useState(false);
   const countDays = useAppStore((s) => s.countDays);
-
   return (
     <article className="border-b border-slate-100 dark:border-slate-700 last:border-b-0">
       <div 
@@ -55,20 +53,17 @@ export function MonitorCard({ monitor, showLink }: MonitorCardProps) {
             </span>
           </div>
         </div>
-
         {/* 时间线 */}
         <div className="flex gap-[2px] mb-2">
           {monitor.daily.map((day, idx) => {
             let status = 'none';
             if (day.uptime >= 100) status = 'ok';
             else if (day.uptime > 0 || day.down.times > 0) status = 'down';
-
             const tooltip = `${day.date.format('YYYY-MM-DD')}\n可用率: ${formatNumber(day.uptime)}%${
               day.down.times > 0 
                 ? `\n故障: ${day.down.times}次, ${formatDuration(day.down.duration)}` 
                 : ''
             }`;
-
             return (
               <div
                 key={idx}
@@ -78,7 +73,6 @@ export function MonitorCard({ monitor, showLink }: MonitorCardProps) {
             );
           })}
         </div>
-
         {/* 摘要 */}
         <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
           <span>今天</span>
@@ -90,7 +84,6 @@ export function MonitorCard({ monitor, showLink }: MonitorCardProps) {
           <span>{monitor.daily[monitor.daily.length - 1]?.date.format('YYYY-MM-DD')}</span>
         </div>
       </div>
-
       {/* 展开详情 */}
       {expanded && <MonitorDetail monitor={monitor} />}
     </article>
