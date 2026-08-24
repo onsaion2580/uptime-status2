@@ -12,7 +12,7 @@ export function Footer() {
       <p>
         基于{' '}
         <a
-          href="https://uptimerobot.com/"
+          href="https://github.com/onsaion2580/uptime-status2/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-green-500 hover:underline"
@@ -24,22 +24,13 @@ export function Footer() {
       <p className="mt-1">
         Powered by{' '}
         <a
-          href="https://github.com/lyhxx/uptime-status"
+          href="https://github.com/onsaion2580/uptime-status2/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-green-500 hover:underline"
         >
           Uptime Status
         </a>
-      </p>
-      <p className="mt-3 flex items-center justify-center gap-4 text-xs">
-        <span>
-          今日访问 <span id="busuanzi_today_pv" className="text-green-500">-</span> 次
-        </span>
-        <span className="text-slate-300 dark:text-slate-600">|</span>
-        <span>
-          总访问 <span id="busuanzi_site_pv" className="text-green-500">-</span> 次
-        </span>
       </p>
     </footer>
   );
